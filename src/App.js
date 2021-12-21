@@ -38,6 +38,7 @@ function App() {
       const response = await fetch(`https://google-task-backend-strive.herokuapp.com/planners/${selected}`, {
         method:"DELETE",
       })
+      alert(`the Planner with an id of ${selected} is deleted`)
     } catch (error) {
       console.log('something went wrong :(', error);
     }
