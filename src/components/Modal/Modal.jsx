@@ -28,9 +28,6 @@ export const Modal = ({ isOpen, close, type, planners }) => {
         },
         body: JSON.stringify({ content: event.target.value }),      
       })
-      if(response.ok) {
-        newTask(response)
-      }
     } catch (error) {
       console.log(error);
     }
@@ -45,6 +42,7 @@ export const Modal = ({ isOpen, close, type, planners }) => {
       newTask(event.target.value);
     }
   };
+
   const handleAddPlanner = (event) => {
     console.log(event.key);
     if (event.key === "Enter") {
@@ -52,6 +50,7 @@ export const Modal = ({ isOpen, close, type, planners }) => {
       close();
     }
   };
+
   return (
     <>
       {type === "task"
