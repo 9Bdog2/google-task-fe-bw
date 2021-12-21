@@ -22,12 +22,12 @@ export const Modal = ({ isOpen, close, type, planners }) => {
 
   const addNewTask = async (event) => {
     try {
-      let response = await fetch ("https://google-task-backend-strive.herokuapp.com/tasks" + select, {
+      let response = await fetch ("https://google-task-backend-strive.herokuapp.com/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content: event.target.value, done: false }),      
+        body: JSON.stringify({ content: event.target.value, done: false, plannerId: select }),      
       })
       let data = await response.json();
       console.log(data);
