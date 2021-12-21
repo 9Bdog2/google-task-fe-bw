@@ -54,6 +54,19 @@ export const SingleTask = ({ content, id, setDone }) => {
     }
   };
 
+  const deleteTask = async () => {
+    try {
+      let response = await fetch(`https://google-task-backend-strive.herokuapp.com/tasks/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        console.log("Task Deleted");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="single__wrap">
@@ -66,7 +79,9 @@ export const SingleTask = ({ content, id, setDone }) => {
         <Button variant="info" onClick={handleShow}>
           Update
         </Button>
-        <Button variant="danger">Delete</Button>
+        <Button variant="danger" onClick={deleteTask}>
+          Delete
+        </Button>
       </div>
       <Modal className="modal__bg" show={show} onHide={handleClose}>
         <Modal.Body className="modal__inner">
