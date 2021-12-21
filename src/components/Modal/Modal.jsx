@@ -5,10 +5,14 @@ export const Modal = ({ isOpen, close, type, planners }) => {
   const [select, setSelect] = useState([]);
   const [task, newTask] = useState("");
 
-  const addNewPlanner = async () => {
+  const addNewPlanner = async (event) => {
     try {
       let response = await fetch("https://google-task-backend-strive.herokuapp.com/planners", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: event.target.value }),
       })
     } catch (error) {
       console.log(error);
