@@ -12,6 +12,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [openPlanner, setOpenPlanner] = useState(false);
   const [selected, setSelected] = useState("");
+  
 
   const fetchPlanners = async () => {
     try {
@@ -30,12 +31,26 @@ function App() {
     fetchPlanners();
   }, [])
 
+
+  const deletePlanner = async()=> {
+  console.log("Planner id:",selected)
+    try {
+      const response = await fetch(`https://google-task-backend-strive.herokuapp.com/planners/${selected}`, {
+        method:"DELETE",
+      })
+      alert(`the Planner with an id of ${selected} is deleted`)
+    } catch (error) {
+      console.log('something went wrong :(', error);
+    }
+  }
+
+ 
   return (
     <>
       <div className="app__wrap">
         <img src="/assets/logo.png" alt="logo" />
         <div className="app__header">
-        {selected !== "" && <small>Delete planner</small>}
+        {selected !== "" && <button onClick={deletePlanner}>Delete planner</button>}
         <div className="app__buttons">
 
           <Dropdown
