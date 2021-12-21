@@ -5,7 +5,7 @@ import "./Dropdown.css";
 export const Dropdown = ({ fetchSelPlanner, planners }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState({});
-  // const [planners, setPlanners] = useState([]);
+  
 
   useEffect(() => {
     fetchSelPlanner(selected?.tasks, selected?.id || "");
