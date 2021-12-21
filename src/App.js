@@ -13,20 +13,22 @@ function App() {
   const [openPlanner, setOpenPlanner] = useState(false);
   const [selected, setSelected] = useState("");
 
-  const fetchPlanners = async() => {
+  const fetchPlanners = async () => {
     try {
-      let response = await fetch("https://google-task-backend-strive.herokuapp.com/planners", {
-        method: "GET",
-      })
-      setPlanners(response);
+      const response = await fetch("https://google-task-backend-strive.herokuapp.com/planners")
+      if (response.ok) {
+        let data = await response.json();
+        console.log(data);
+        setPlanners(data);
+      }
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   useEffect(() => {
     fetchPlanners();
-  }, []);
+  }, [])
 
   return (
     <>
