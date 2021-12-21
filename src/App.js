@@ -18,14 +18,15 @@ function App() {
       let response = await fetch("https://google-task-backend-strive.herokuapp.com/planners", {
         method: "GET",
       })
+      setPlanners(response);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchPlanners();
-  }, [])
+  }, []);
 
   return (
     <>
