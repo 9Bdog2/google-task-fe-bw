@@ -28,6 +28,9 @@ export const Modal = ({ isOpen, close, type, planners }) => {
         },
         body: JSON.stringify({ content: event.target.value }),      
       })
+      if(response.ok) {
+        newTask(response)
+      }
     } catch (error) {
       console.log(error);
     }
