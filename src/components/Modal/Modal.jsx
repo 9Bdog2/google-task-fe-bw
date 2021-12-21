@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Modal.css";
 
-export const Modal = ({ isOpen, close, type, planners }) => {
+export const Modal = ({ isOpen, close, type, planners, plannerId }) => {
   const [select, setSelect] = useState([]);
   const [task, newTask] = useState("");
   
@@ -26,8 +26,10 @@ export const Modal = ({ isOpen, close, type, planners }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content: event.target.value }),      
+        body: JSON.stringify({ content: event.target.value, done: false, plannerId }),      
       })
+      let data = await response.json();
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
