@@ -19,7 +19,6 @@ function App() {
       const response = await fetch("https://google-task-backend-strive.herokuapp.com/planners")
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         setPlanners(data);
       }
     } catch (error) {
@@ -32,7 +31,6 @@ function App() {
       const response = await fetch("https://google-task-backend-strive.herokuapp.com/tasks")    
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         setTasks(data);
       }
     } catch (error) {
@@ -49,7 +47,7 @@ function App() {
   const deletePlanner = async()=> {
   console.log("Planner id:",selected)
     try {
-      const response = await fetch(`https://google-task-backend-strive.herokuapp.com/planners/${selected}`, {
+      await fetch(`https://google-task-backend-strive.herokuapp.com/planners/${selected}`, {
         method:"DELETE",
       })
       alert(`the Planner with an id of ${selected} is deleted`)

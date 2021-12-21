@@ -3,7 +3,6 @@ import { BsCircle, BsCheckCircle } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "../Modal/Modal.css";
-import { useNavigate } from "react-router-dom";
 
 export const SingleTask = ({ content, id, setDone }) => {
   const [isChecked, setChecked] = useState(false);
@@ -92,7 +91,7 @@ export const SingleTask = ({ content, id, setDone }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={updateTask()}>
+          <Button variant="primary" onClick={updateTask}>
             Save Changes
           </Button>
         </Modal.Body>
