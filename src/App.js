@@ -35,11 +35,9 @@ function App() {
   const deletePlanner = async()=> {
   console.log("Planner id:",selected)
     try {
-      const response = await fetch("https://google-task-backend-strive.herokuapp.com/planners/"+selected, {
+      const response = await fetch(`https://google-task-backend-strive.herokuapp.com/planners/${selected}`, {
         method:"DELETE",
       })
-
-      if (!response.ok) throw new Error("Fetch Failed");
     } catch (error) {
       console.log('something went wrong :(', error);
     }
@@ -51,7 +49,7 @@ function App() {
       <div className="app__wrap">
         <img src="/assets/logo.png" alt="logo" />
         <div className="app__header">
-        {selected !== "" && <button onSubmit={deletePlanner()}>Delete planner</button>}
+        {selected !== "" && <button onClick={deletePlanner}>Delete planner</button>}
         <div className="app__buttons">
 
           <Dropdown
