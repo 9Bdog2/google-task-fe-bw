@@ -17,11 +17,10 @@ export const Modal = ({ isOpen, close, type, planners }) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   const handleAddTask = async (event) => {
     console.log(event.key);
     if (event.key === "Enter") {
-      
       close();
     } else {
       newTask(event.target.value);
@@ -60,17 +59,18 @@ export const Modal = ({ isOpen, close, type, planners }) => {
               </div>{" "}
             </>
           )
-        : isOpen && type === "planner" && (
-          <>
-          <div className="modal__bg" onClick={() => close()}></div>
-            <div className="modal__inner">
-              <div className="modal__controls" onClick={() => close()}>
-                x
+        : isOpen &&
+          type === "planner" && (
+            <>
+              <div className="modal__bg" onClick={() => close()}></div>
+              <div className="modal__inner">
+                <div className="modal__controls" onClick={() => close()}>
+                  x
+                </div>
+                <h2>Create new planner</h2>
+                <small>Press enter to create</small>
+                <input type="text" onKeyUp={(e) => handleAddPlanner(e)} />
               </div>
-              <h2>Create new planner</h2>
-              <small>Press enter to create</small>
-              <input type="text" onKeyUp={(e) => handleAddPlanner(e)} />
-            </div>
             </>
           )}
     </>
