@@ -6,12 +6,14 @@ import { Dropdown } from "./components/Dropdown/Dropdown";
 import { SingleTask } from "./components/SingleTask/SingleTask";
 import { Modal } from "./components/Modal/Modal";
 
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [planners, setPlanners] = useState([]);
   const [open, setOpen] = useState(false);
   const [openPlanner, setOpenPlanner] = useState(false);
   const [selected, setSelected] = useState("");
+  
 
   const fetchPlanners = async () => {
     try {
@@ -30,6 +32,9 @@ function App() {
     fetchPlanners();
   }, [])
 
+ 
+
+ 
   return (
     <>
       <div className="app__wrap">
