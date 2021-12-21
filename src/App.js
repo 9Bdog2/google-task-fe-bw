@@ -26,8 +26,22 @@ function App() {
     }
   }
 
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch("https://google-task-backend-strive.herokuapp.com/tasks")    
+      if (response.ok) {
+        let data = await response.json();
+        console.log(data);
+        setTasks(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     fetchPlanners();
+    fetchTasks();
   }, [])
 
   return (
