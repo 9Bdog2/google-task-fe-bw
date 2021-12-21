@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Modal.css";
 
 export const Modal = ({ isOpen, close, type, planners }) => {
@@ -22,22 +22,26 @@ export const Modal = ({ isOpen, close, type, planners }) => {
 
   const addNewTask = async (event) => {
     try {
+      // const item = event.target.value;
+      // console.log(item)
+      // newTask([...task, item])
       let response = await fetch ("https://google-task-backend-strive.herokuapp.com/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content: event.target.value, done: false, plannerId: select }),      
+        body:JSON.stringify({ content: event.target.value, done: false, plannerId: select }),      
       })
       await response.json();
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   const handleAddTask = (event) => {
     if (event.key === "Enter") {
       addNewTask(event);
+      window.location.reload();
       close();
     } else {
       newTask(event.target.value);

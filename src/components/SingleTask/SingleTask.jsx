@@ -7,7 +7,6 @@ import "../Modal/Modal.css";
 export const SingleTask = ({ content, id, setDone }) => {
   const [isChecked, setChecked] = useState(false);
   const [singleTask, setSingleTask] = useState([]);
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -59,7 +58,7 @@ export const SingleTask = ({ content, id, setDone }) => {
         method: "DELETE",
       });
       if (response.ok) {
-        console.log("Task Deleted");
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
