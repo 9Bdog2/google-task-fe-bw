@@ -6,7 +6,6 @@ import { Dropdown } from "./components/Dropdown/Dropdown";
 import { SingleTask } from "./components/SingleTask/SingleTask";
 import { Modal } from "./components/Modal/Modal";
 
-
 function App() {
   const [tasks, setTasks] = useState([]);
   const [planners, setPlanners] = useState([]);
@@ -32,7 +31,19 @@ function App() {
     fetchPlanners();
   }, [])
 
- 
+
+  const deletePlanner = async()=> {
+  console.log("Planner id:",selected)
+    try {
+      const response = await fetch("https://google-task-backend-strive.herokuapp.com/planners/"+selected, {
+        method:"DELETE",
+      })
+
+      if (!response.ok) throw new Error("Fetch Failed");
+    } catch (error) {
+      console.log('something went wrong :(', error);
+    }
+  }
 
  
   return (
@@ -40,7 +51,7 @@ function App() {
       <div className="app__wrap">
         <img src="/assets/logo.png" alt="logo" />
         <div className="app__header">
-        {selected !== "" && <small>Delete planner</small>}
+        {selected !== "" && <button onSubmit={deletePlanner()}>Delete planner</button>}
         <div className="app__buttons">
 
           <Dropdown
