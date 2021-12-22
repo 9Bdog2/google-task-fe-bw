@@ -67,8 +67,9 @@ export const Dropdown = ({ fetchSelPlanner, planners }) => {
       
       <div>{selected===undefined && tasks.map((task) => {
           return <SingleTask key={task.id} content={task.content} id={task.id} setDone={()=> {}} />;
-        })}</div>
+        })}
       </div>
+    </div>
     </>
   );
 };
