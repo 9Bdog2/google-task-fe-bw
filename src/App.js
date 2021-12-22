@@ -14,6 +14,8 @@ function App() {
   const [selected, setSelected] = useState("");
   const [searchInput, setSearchInput] = useState('');
   
+ 
+
 
   const fetchPlanners = async () => {
     try {
@@ -39,10 +41,26 @@ function App() {
     }
   }
 
+
+
   useEffect(() => {
     fetchPlanners();
     fetchTasks();
   }, [])
+  
+
+
+// ********************* SEA1RCH BAR FIELD *************************
+
+  useEffect(()=> {
+    fetchPlanners();
+    const result = planners.filter(res => res.toLowerCase().includes(searchInput))
+    console.log("SetPlanner array:",setPlanners(result))
+  }, [])
+
+
+  // ***************************************************************
+
 
 
   const deletePlanner = async()=> {
@@ -56,13 +74,7 @@ function App() {
       console.log('something went wrong :(', error);
     }
   }
-  // const searchPlanner =(searchValue)=> {
-  //   setSearchInput(searchValue)
-  //   planners.filter((item) => {
-  //     return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-  // })
-
-  // }
+ 
  
   return (
     <>
@@ -75,10 +87,14 @@ function App() {
           placeholder="search..."
           className="searchinput"
           value={searchInput}
-          onChange={(e)=> (setSearchInput(e.target.value))}
-  
-          /> 
+          onChange={(e)=> setSearchInput(e.target.value)}
 
+          /> 
+          <ul>
+            {planners.map(plan => (
+              <li>{plan}</li>
+            ))}
+          </ul>
         </div>
         <div className="app__buttons">
           <Dropdown
