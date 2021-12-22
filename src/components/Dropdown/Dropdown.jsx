@@ -27,7 +27,7 @@ export const Dropdown = ({ fetchSelPlanner, planners }) => {
 
   useEffect(() => {
     fetchTasks();
-  }, [])
+  }, []);
 
   useEffect(() => {
     fetchSelPlanner(selected?.tasks, selected?.id || "");
