@@ -47,9 +47,18 @@ export const SingleTask = ({ content, id, setDone }) => {
       if (response.ok) {
         console.log("Task updated");
       }
+      window.location.reload();
+
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleUpdate = (event) => {
+    if (event.key === "Enter") {
+      updateTask(event);
+      window.location.reload();
+    } 
   };
 
   const deleteTask = async () => {
@@ -85,7 +94,7 @@ export const SingleTask = ({ content, id, setDone }) => {
         <Modal.Body className="modal__inner">
           <h2>Update task</h2>
           <small>Press enter to update</small>
-          <input type="text" onKeyUp={(e) => updateTask(e)} />
+          <input type="text" onKeyUp={(e) => handleUpdate(e)} />
 
           <Button variant="secondary" onClick={handleClose}>
             Close

@@ -15,11 +15,12 @@ export const Modal = ({ isOpen, close, type, planners }) => {
         },
         body: JSON.stringify({ name: event.target.value }),
       })
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
   };
-
+ 
   const addNewTask = async (event) => {
     try {
       // const item = event.target.value;
