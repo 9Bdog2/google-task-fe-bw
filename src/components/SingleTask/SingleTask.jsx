@@ -106,6 +106,7 @@ export  const SingleTask = ({ content, id, setDone }) => {
           </Button>
         </Modal.Body>
       </Modal>
+      <br />
     </>
   );
 };
