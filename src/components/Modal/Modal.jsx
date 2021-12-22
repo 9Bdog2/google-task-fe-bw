@@ -68,7 +68,7 @@ export const Modal = ({ isOpen, close, type, planners }) => {
                 </div>
                 <h2>Create new task</h2>
                 <small>Press enter to create</small>
-                <input type="text" onKeyUp={(e) => handleAddTask(e)} />
+                <input type="text" onKeyUp={(event) => handleAddTask(event)} />
                 <h3>Choose a planner</h3>
                 <div className="modal__planners">
                   {planners?.map((planner) => {

@@ -46,6 +46,8 @@ export  const SingleTask = ({ content, id, setDone }) => {
       });
       if (response.ok) {
         console.log("Task updated");
+      } else {
+        console.log("Task not updated");
       }
       window.location.reload();
 
