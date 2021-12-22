@@ -35,6 +35,7 @@ export const Dropdown = ({ fetchSelPlanner, planners }) => {
 
   return (
     <>
+    <div className="dropdown_container">
       <div
         className="dropdown__wrap"
         onClick={(e) => {
@@ -67,7 +68,7 @@ export const Dropdown = ({ fetchSelPlanner, planners }) => {
       <div>{selected===undefined && tasks.map((task) => {
           return <SingleTask key={task.id} content={task.content} id={task.id} setDone={()=> {}} />;
         })}</div>
-      
+      </div>
     </>
   );
 };

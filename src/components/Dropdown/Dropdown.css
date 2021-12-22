@@ -27,3 +27,11 @@ div.dropdown__content {
 
   border-radius: 10px;
 }
+
+div.dropdown_container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
