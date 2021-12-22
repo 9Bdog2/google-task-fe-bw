@@ -61,6 +61,7 @@ export const Modal = ({ isOpen, close, type, planners }) => {
       {type === "task"
         ? isOpen && (
             <>
+            
               <div className="modal__bg" onClick={() => close()}></div>
               <div className="modal__inner">
                 <div className="modal__controls" onClick={() => close()}>

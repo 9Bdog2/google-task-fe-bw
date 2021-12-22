@@ -12,6 +12,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [openPlanner, setOpenPlanner] = useState(false);
   const [selected, setSelected] = useState("");
+  const [searchInput, setSearchInput] = useState('');
   
 
   const fetchPlanners = async () => {
@@ -55,7 +56,13 @@ function App() {
       console.log('something went wrong :(', error);
     }
   }
+  // const searchPlanner =(searchValue)=> {
+  //   setSearchInput(searchValue)
+  //   planners.filter((item) => {
+  //     return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+  // })
 
+  // }
  
   return (
     <>
@@ -63,8 +70,17 @@ function App() {
         <img src="/assets/logo.png" alt="logo" />
         <div className="app__header">
         {selected !== "" && <button onClick={deletePlanner}>Delete planner</button>}
-        <div className="app__buttons">
+          <div className="searchField">
+          <input type="search" 
+          placeholder="search..."
+          className="searchinput"
+          value={searchInput}
+          onChange={(e)=> (setSearchInput(e.target.value))}
+  
+          /> 
 
+        </div>
+        <div className="app__buttons">
           <Dropdown
             planners={planners}
             fetchSelPlanner={(tasks, sel) => {
