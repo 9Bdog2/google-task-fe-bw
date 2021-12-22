@@ -21,7 +21,7 @@ export const Dropdown = ({ fetchSelPlanner, planners }) => {
       } catch (error) {
         console.log(error);
       }
-    }
+    };
   
   
 
