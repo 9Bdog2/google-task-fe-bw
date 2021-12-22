@@ -83,6 +83,7 @@ function App() {
 
         {tasks?.map((task) => {
           return <SingleTask key={task.id} content={task.content} id={task.id} setDone={()=> {}} />;
+          
         })}
       </div>
       <Modal type="task" planners={planners} isOpen={open} close={() => setOpen(false)} />

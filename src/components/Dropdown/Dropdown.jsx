@@ -43,10 +43,12 @@ export const Dropdown = ({ fetchSelPlanner, planners }) => {
       >
         {!selected?.name ? "Select a planner" : selected?.name}
         {open && (
+    
           <div className="dropdown__content">
             <div onClick={() => setSelected(undefined)}>
               <Option plannerName={"See All"} />
             </div>
+            
             {planners?.map((planner) => {
               return (
                 <div key={planner.id} onClick={() => setSelected(planner)}>
@@ -61,6 +63,7 @@ export const Dropdown = ({ fetchSelPlanner, planners }) => {
         <br />
         
       </div>
+      
       <div>{selected===undefined && tasks.map((task) => {
           return <SingleTask key={task.id} content={task.content} id={task.id} setDone={()=> {}} />;
         })}</div>

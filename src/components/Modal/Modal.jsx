@@ -33,7 +33,7 @@ export const Modal = ({ isOpen, close, type, planners }) => {
         },
         body:JSON.stringify({ content: event.target.value, done: false, plannerId: select }),      
       })
-      await response.json();
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
