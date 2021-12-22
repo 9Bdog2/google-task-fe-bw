@@ -84,7 +84,7 @@ function App() {
       <div className="app__wrap">
         <img src="/assets/logo.png" alt="logo" />
         <div className="app__header">
-        {selected !== "" && <button onClick={deletePlanner}>Delete planner</button>}
+       
           <div className="searchField">
           <input type="search" 
           placeholder="search..."
@@ -101,6 +101,7 @@ function App() {
 
           /> 
         </div>
+          {selected !== "" && <small onClick={deletePlanner}>Delete planner</small>}
         <div className="app__buttons">
           <Dropdown
             planners={planners}
