@@ -33,14 +33,15 @@ function App() {
     try {
       const response = await fetch("https://google-task-backend-strive.herokuapp.com/tasks")    
       if (response.ok) {
-        let data = await response.json();
+        let data = await response.json(); 
+        
         setTasks(data);
+
       }
     } catch (error) {
       console.log(error);
     }
   }
-
 
 
   useEffect(() => {
@@ -50,16 +51,8 @@ function App() {
   
 
 
-// ********************* SEA1RCH BAR FIELD *************************
-
-  useEffect(()=> {
-    fetchPlanners();
-    const result = planners.filter(res => res.toLowerCase().includes(searchInput))
-    console.log("SetPlanner array:",setPlanners(result))
-  }, [])
 
 
-  // ***************************************************************
 
 
 
@@ -74,8 +67,18 @@ function App() {
       console.log('something went wrong :(', error);
     }
   }
- 
- 
+  const filterTask =()=> {
+    const result = tasks.filter(res => res.content.toLowerCase().includes(searchInput))
+    if (result.key === "Enter") {
+      filterTask()
+    }
+    setTasks(result)
+    
+    
+  }
+
+  
+
   return (
     <>
       <div className="app__wrap">
@@ -87,14 +90,16 @@ function App() {
           placeholder="search..."
           className="searchinput"
           value={searchInput}
-          onChange={(e)=> setSearchInput(e.target.value)}
+          onChange={(e)=> {
+            setSearchInput(e.target.value)
+            filterTask()
+          
+          
+          }
+          
+          }
 
           /> 
-          <ul>
-            {planners.map(plan => (
-              <li>{plan}</li>
-            ))}
-          </ul>
         </div>
         <div className="app__buttons">
           <Dropdown
