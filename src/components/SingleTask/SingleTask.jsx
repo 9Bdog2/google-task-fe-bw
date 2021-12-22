@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "../Modal/Modal.css";
 
-export const SingleTask = ({ content, id, setDone }) => {
+export  const SingleTask = ({ content, id, setDone }) => {
   const [isChecked, setChecked] = useState(false);
   const [singleTask, setSingleTask] = useState([]);
   const [show, setShow] = useState(false);
