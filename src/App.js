@@ -12,7 +12,10 @@ function App() {
   const [open, setOpen] = useState(false);
   const [openPlanner, setOpenPlanner] = useState(false);
   const [selected, setSelected] = useState("");
+  const [searchInput, setSearchInput] = useState('');
   
+ 
+
 
   const fetchPlanners = async () => {
     try {
@@ -30,18 +33,27 @@ function App() {
     try {
       const response = await fetch("https://google-task-backend-strive.herokuapp.com/tasks")    
       if (response.ok) {
-        let data = await response.json();
+        let data = await response.json(); 
+        
         setTasks(data);
+
       }
     } catch (error) {
       console.log(error);
     }
   }
 
+
   useEffect(() => {
     fetchPlanners();
     fetchTasks();
   }, [])
+  
+
+
+
+
+
 
 
   const deletePlanner = async()=> {
@@ -55,16 +67,42 @@ function App() {
       console.log('something went wrong :(', error);
     }
   }
+  const filterTask =()=> {
+    const result = tasks.filter(res => res.content.toLowerCase().includes(searchInput))
+    if (result.key === "Enter") {
+      filterTask()
+    }
+    setTasks(result)
+    
+    
+  }
 
- 
+  
+
   return (
     <>
       <div className="app__wrap">
         <img src="/assets/logo.png" alt="logo" />
         <div className="app__header">
-        {selected !== "" && <button onClick={deletePlanner}>Delete planner</button>}
-        <div className="app__buttons">
+       
+          <div className="searchField">
+          <input type="search" 
+          placeholder="search..."
+          className="searchinput"
+          value={searchInput}
+          onChange={(e)=> {
+            setSearchInput(e.target.value)
+            filterTask()
+          
+          
+          }
+          
+          }
 
+          /> 
+        </div>
+          {selected !== "" && <small onClick={deletePlanner}>Delete planner</small>}
+        <div className="app__buttons">
           <Dropdown
             planners={planners}
             fetchSelPlanner={(tasks, sel) => {
